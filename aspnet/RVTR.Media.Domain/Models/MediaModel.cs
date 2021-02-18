@@ -9,7 +9,9 @@ namespace RVTR.Media.Domain.Models
   public class MediaModel : IValidatableObject
   {
     public int Id { get; set; }
-
+    public string GroupIdentifier { get; set; }
+    public int MediaId { get; set; }
+    public string Group { get; set; }
 
     /// <summary>
     /// Empty constructor
