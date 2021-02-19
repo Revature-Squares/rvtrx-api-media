@@ -43,18 +43,22 @@ namespace RVTR.Media.Domain.Models
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
     {
       List<ValidationResult> result = new List<ValidationResult>();
+
       if (string.IsNullOrEmpty(Group))
       {
         result.Add(new ValidationResult("Group can not be null."));
       }
+
       if (string.IsNullOrEmpty(GroupIdentifier))
       {
         result.Add(new ValidationResult("GroupIdentifier can not be null."));
       }
+
       if (string.IsNullOrEmpty(Uri))
       {
         result.Add(new ValidationResult("URL can not be null."));
       }
+      
       if (string.IsNullOrEmpty(AltText))
       {
         result.Add(new ValidationResult("AltText can not be null."));
