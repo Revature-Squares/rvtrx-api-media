@@ -8,6 +8,7 @@ namespace RVTR.Media.Domain.Interfaces
     Task DeleteAsync(int id);
     Task InsertAsync(TEntity entry);
     Task<IEnumerable<TEntity>> SelectAsync();
+    Task<IEnumerable<TEntity>> SelectAsync(string groupIdentifier);
     Task<TEntity> SelectAsync(int id);
     void Update(TEntity entry);
   }

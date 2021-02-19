@@ -19,6 +19,10 @@ namespace RVTR.Media.Context.Repositories
       .Where(x => x.MediaId == id)
       .FirstOrDefaultAsync();
 
+    public override async Task<IEnumerable<MediaModel>> SelectAsync(string groupIdentifier) => await Db
+      .Where(x => x.GroupIdentifier == groupIdentifier)
+      .ToListAsync();
+
     public override async Task<IEnumerable<MediaModel>> SelectAsync() =>
       await Db.ToListAsync();
   }

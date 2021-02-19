@@ -29,6 +29,8 @@ namespace RVTR.Media.Context.Repositories
 
     public virtual async Task<IEnumerable<TEntity>> SelectAsync() => await Db.ToListAsync();
 
+    public virtual async  Task<IEnumerable<TEntity>> SelectAsync(string groupIdentifier) => await Db.ToListAsync();
+
     public virtual async Task<TEntity> SelectAsync(int id) => await Db.FindAsync(id).ConfigureAwait(true);
 
     public virtual void Update(TEntity entry) => Db.Update(entry);
