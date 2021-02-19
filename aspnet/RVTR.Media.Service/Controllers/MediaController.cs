@@ -38,20 +38,18 @@ namespace RVTR.Media.Service.Controllers
     /// <summary>
     ///
     /// </summary>
-    /// <param name="group"></param>
-    /// <param name="groupidentifier"></param>
+    /// <param name="mediaId"></param>
     /// <returns></returns>
-    [HttpDelete("{group}/{groupidentifier}")]
+    [HttpDelete("{mediaId}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Delete(string group, string groupidentifier)
+    public async Task<IActionResult> Delete(int mediaId)
     {
       try
       {
         _logger.LogDebug("deleting media");
 
-        var mediaModel = await _unitOfWork.Media.SelectAsync(groupidentifier);
-
+        var mediaModel = await _unitOfWork.Media.SelectAsync(mediaId);
 
         await _unitOfWork.Media.DeleteAsync(mediaModel.MediaId);
         await _unitOfWork.CommitAsync();
@@ -81,7 +79,6 @@ namespace RVTR.Media.Service.Controllers
       _logger.LogInformation($"retrieve media");
 
       return Ok(await _unitOfWork.Media.SelectAsync(groupidentifier));
-
     }
 
 
