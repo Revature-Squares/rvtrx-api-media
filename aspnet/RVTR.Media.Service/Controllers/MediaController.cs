@@ -120,6 +120,7 @@ namespace RVTR.Media.Service.Controllers
     /// <returns></returns>
     [HttpPost("{group}/{groupidentifier}")]
     [ProducesResponseType(StatusCodes.Status202Accepted)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Post([FromForm] IFormFileCollection files, string group, string groupidentifier)
     {
       Regex FileExtensionRegex = new Regex(@"([a-zA-Z0-9\s_\.-:])+\.(png|jpg)$");
@@ -171,7 +172,6 @@ namespace RVTR.Media.Service.Controllers
 
               _logger.LogInformation($"added media model");
 
-              AcceptedModels.Add(model);
               break;
             }
 
@@ -182,7 +182,7 @@ namespace RVTR.Media.Service.Controllers
         }
       }
 
-      return Accepted(AcceptedModels);
+      return Accepted();
     }
 
     /// <summary>
