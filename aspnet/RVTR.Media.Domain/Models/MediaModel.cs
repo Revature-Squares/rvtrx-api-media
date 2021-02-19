@@ -6,11 +6,7 @@ namespace RVTR.Media.Domain.Models
   /// <summary>
   /// Represents the _Media_ model
   /// </summary>
-  /// <param name="MediaId"></param>
-  /// <param name="Group">profile or campground or campsite</param>
-  /// <param name="GroupdIdentifier">For profile use email. For campground use campgroundName. For campsite use campgroundName-lotNumber</param>
-  /// <param name="Uri"></param>
-  /// <param name="AltText"></param>
+
   public class MediaModel : IValidatableObject
   {
     public int MediaId { get; set; }
@@ -58,7 +54,7 @@ namespace RVTR.Media.Domain.Models
       {
         result.Add(new ValidationResult("URL can not be null."));
       }
-      
+
       if (string.IsNullOrEmpty(AltText))
       {
         result.Add(new ValidationResult("AltText can not be null."));
