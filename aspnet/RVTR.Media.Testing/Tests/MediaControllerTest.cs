@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Moq;
 using RVTR.Media.Domain.Interfaces;
@@ -17,6 +18,7 @@ namespace RVTR.Media.Testing.Tests
     private readonly MediaController _controller;
     private readonly ILogger<MediaController> _logger;
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IConfiguration _configuration;
 
     public static readonly IEnumerable<object[]> Medias = new List<object[]>
     {
@@ -51,7 +53,7 @@ namespace RVTR.Media.Testing.Tests
 
       _logger = loggerMock.Object;
       _unitOfWork = unitOfWorkMock.Object;
-      _controller = new MediaController(_logger, _unitOfWork);
+      _controller = new MediaController(_logger, _unitOfWork, _configuration);
     }
 
     [Fact]
